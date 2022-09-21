@@ -1,10 +1,10 @@
 NAME = push_swap
 
 CFLAGS	= -Wall -Wextra -Werror
-RM		= -f
+RM		= rm -f
 LIBFT	= ./libft/libft.a
 SRCS	= ./src/push_swap.c \
-		  ./src/exec_swap.c
+	  ./src/exec_swap.c
 
 OBJS	= $(SRCS: .c=.o)
 
@@ -18,7 +18,7 @@ clean:
 			make clean -C ./libft
 			$(RM) $(OBJS)
 
-fclean:
+fclean:		clean
 			make fclean -C ./libft
 			$(RM) $(NAME)
 

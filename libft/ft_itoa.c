@@ -44,11 +44,9 @@ char	*ft_itoa(int n)
 	char	*str;
 	long	nb;
 	int		i;
-	int		j;
 	int		k;
 
 	nb = (long) n;
-	j = 0;
 	i = 0;
 	k = 0;
 	if (nb < 0)

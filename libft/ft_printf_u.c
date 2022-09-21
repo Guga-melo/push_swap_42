@@ -44,19 +44,11 @@ static char	*ft_iitoa(int n)
 	char			*str;
 	unsigned int	nb;
 	int				i;
-	int				j;
 	int				k;
 
 	nb = (unsigned int) n;
-	j = 0;
 	i = 0;
 	k = 0;
-	if (nb < 0)
-	{
-		nb = nb * (-1);
-		i++;
-		k++;
-	}
 	i = ft_lennum(nb, i);
 	str = malloc((i + k + 1) * sizeof(char));
 	if (str == 0)
