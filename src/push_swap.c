@@ -6,7 +6,7 @@
 /*   By: gussoare <gussoare@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 13:21:51 by gussoare          #+#    #+#             */
-/*   Updated: 2022/09/22 09:56:49 by gussoare         ###   ########.fr       */
+/*   Updated: 2022/09/22 11:21:22 by gussoare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,16 @@ static int ft_check_swap(int *a, int *b, int len)
 	return (0);
 }
 
-static void ft_push_swap(int *a, int *b, int len)
+static void ft_push_swap(int *a, int *b)
 {
+	int len_a;
+	int len_b;
+
 	while (42)
 	{
-		if (ft_check_swap(a, b, len))
+		len_a = ft_intlen(a);
+		len_b = ft_intlen(b);
+		if (ft_check_swap(a, b, len_a))
 		{
 			ft_printf("FINISHED!!\n");
 			break ;
@@ -57,39 +62,38 @@ static void ft_push_swap(int *a, int *b, int len)
 			ft_exec_sx(b);
 			ft_printf("sb\n");
 		}
-		else if (a[0] > a[len - 1] && b[0] > b[len - 1])
+		else if (a[0] > a[len_a - 1] && b[0] > b[len_b - 1])
 		{
 			ft_exec_rx(a);
 			ft_exec_rx(b);
 			ft_printf("rr\n");
 		}
-		else if (a[0] > a[len - 1])
+		else if (a[0] > a[len_a - 1])
 		{
 			ft_exec_rx(a);
 			ft_printf("ra\n");
 		}
-		else if (b[0] > b[len - 1])
+		else if (b[0] > b[len_b - 1])
 		{
 			ft_exec_rx(b);
 			ft_printf("rb\n");
 		}
-		else if (a[0] < a[len - 1] && b[0] < b[len])
+		else if (a[0] < a[len_a - 1] && b[0] < b[len_b - 1])
 		{
-			ft_exec_rrx(a, len - 1);
-			ft_exec_rrx(b, len - 1);
+			ft_exec_rrx(a, len_a - 1);
+			ft_exec_rrx(b, len_b - 1);
 			ft_printf("rrr\n");
 		}
-		else if (a[0] < a[len - 1])
+		else if (a[0] < a[len_a - 1])
 		{
-			ft_exec_rrx(a, len - 1);
+			ft_exec_rrx(a, len_a - 1);
 			ft_printf("rra\n");
 		}	
-		else if (b[0] < b[len])
+		else if (b[0] < b[len_b - 1])
 		{
-			ft_exec_rrx(b, len - 1);
+			ft_exec_rrx(b, len_b - 1);
 			ft_printf("rrb\n");
 		}
-
 		else
 			break ;
 	}
@@ -126,7 +130,7 @@ int	main(int argc, char **argv)
 			i++;
 		}
 		a[i] = '\0';
-		ft_push_swap(a, b, len);
+		ft_push_swap(a, b);
 		int i = 0;
 		while (a[i])
 		{

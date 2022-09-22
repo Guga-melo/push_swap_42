@@ -4,7 +4,8 @@ CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -f
 LIBFT	= ./libft/libft.a
 SRCS	= ./src/push_swap.c \
-	  ./src/exec_swap.c
+		  ./src/exec_swap.c \
+		  ./src/utils.c
 
 OBJS	= $(SRCS:.c=.o)
 

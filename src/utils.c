@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gussoare <gussoare@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 13:20:42 by gussoare          #+#    #+#             */
-/*   Updated: 2022/09/22 11:04:37 by gussoare         ###   ########.fr       */
+/*   Created: 2022/09/22 10:49:46 by gussoare          #+#    #+#             */
+/*   Updated: 2022/09/22 11:19:52 by gussoare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "../libft/libft.h"
+#include "../inc/push_swap.h"
 
-void	ft_exec_sx(int *x);
-void	ft_exec_rx(int *x);
-void	ft_exec_rrx(int *x, int len);
-int		ft_intlen(int *n);
+int ft_intlen(int *n)
+{
+	int i;
 
-#endif
+	i = 0;
+	while (n[i])
+		i++;
+	return (i);
+}
