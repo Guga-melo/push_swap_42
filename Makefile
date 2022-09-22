@@ -6,7 +6,7 @@ LIBFT	= ./libft/libft.a
 SRCS	= ./src/push_swap.c \
 	  ./src/exec_swap.c
 
-OBJS	= $(SRCS: .c=.o)
+OBJS	= $(SRCS:.c=.o)
 
 $(NAME):	$(OBJS)
 			make -C ./libft	
