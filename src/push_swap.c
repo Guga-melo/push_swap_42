@@ -6,7 +6,7 @@
 /*   By: gussoare <gussoare@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 13:21:51 by gussoare          #+#    #+#             */
-/*   Updated: 2022/09/22 11:21:22 by gussoare         ###   ########.fr       */
+/*   Updated: 2022/09/22 12:53:59 by gussoare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ int	main(int argc, char **argv)
 		int i = 0;
 		while (a[i])
 		{
-			ft_printf("a[%d]--> %d\n", i, a[i]);
+			ft_printf("a[%d]--> %d | b[%d]--> %d\n", i, a[i], i, b[i]);
 			i++;
 		}
 		free(a);
