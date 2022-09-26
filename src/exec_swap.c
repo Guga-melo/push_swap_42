@@ -6,7 +6,7 @@
 /*   By: gussoare <gussoare@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 14:16:41 by gussoare          #+#    #+#             */
-/*   Updated: 2022/09/22 12:40:15 by gussoare         ###   ########.fr       */
+/*   Updated: 2022/09/26 10:55:55 by gussoare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ void	ft_exec_px(int *x, int *y)
 void	ft_exec_rx(int *x)
 {
 	int temp;
+	int	len;
 	int i;
 
+	len = ft_intlen(x);
 	i = 0;
 	temp = x[0];
-	while (x[i + 1])
+	while (i <= len)
 	{
 		x[i] = x[i + 1];
 		i++;
@@ -48,11 +50,13 @@ void	ft_exec_rx(int *x)
 	x[i + 1] = '\0';
 }
 
-void ft_exec_rrx(int *x, int len)
+void ft_exec_rrx(int *x)
 {
 	int temp;
 	int i;
+	int len;
 
+	len = ft_intlen(x) - 1;
 	temp = x[len];
 	i = len;
 	while (i > 0)

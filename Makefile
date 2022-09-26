@@ -5,9 +5,13 @@ RM		= rm -f
 LIBFT	= ./libft/libft.a
 SRCS	= ./src/push_swap.c \
 		  ./src/exec_swap.c \
+		  ./src/swap_cases.c \
 		  ./src/utils.c
 
 OBJS	= $(SRCS:.c=.o)
+
+.c.o:
+			cc $(CFLAGS) -c $< -o $(<:.c=.o) -I ./inc
 
 $(NAME):	$(OBJS)
 			make -C ./libft	

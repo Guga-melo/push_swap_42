@@ -6,107 +6,24 @@
 /*   By: gussoare <gussoare@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 13:21:51 by gussoare          #+#    #+#             */
-/*   Updated: 2022/09/22 12:53:59 by gussoare         ###   ########.fr       */
+/*   Updated: 2022/09/26 13:08:08 by gussoare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static int ft_check_swap(int *a, int *b, int len)
+static int ft_push_swap(int *a, int *b, int n_nbr)
 {
-	int	i;
-
-	i = 0;
-	if (a[i] && !*b)
+	if (n_nbr == 2 && a[0] > a[1])
 	{
-		while (a[i] && i < len)
-		{
-			if (a[i] < a[i + 1] && a[i + 1] != '\0')
-				i++;
-			else
-				break ;
-		}
-		if (a[i + 1] == '\0')
-			return (1);
+		ft_exec_sx(a);
+		ft_printf("sa\n");
 	}
+	else if (n_nbr == 3)
+		swap_three_case(a);
+	else if (n_nbr > 3 && n_nbr < 100)
+		swap_five_case(a, b, n_nbr);
 	return (0);
-}
-
-static void ft_push_swap(int *a, int *b)
-{
-	int len_a;
-	int len_b;
-
-	while (42)
-	{
-		len_a = ft_intlen(a);
-		len_b = ft_intlen(b);
-		if (ft_check_swap(a, b, len_a))
-		{
-			ft_printf("FINISHED!!\n");
-			break ;
-		}	
-		if (a[0] > a[1] && b[0] > b[1])
-		{
-			ft_exec_sx(a);
-			ft_exec_sx(b);
-			ft_printf("ss\n");
-		}
-		else if (a[0] > a[1])
-		{
-			ft_exec_sx(a);
-			ft_printf("sa\n");
-		}
-		else if (b[0] > b[1])
-		{
-			ft_exec_sx(b);
-			ft_printf("sb\n");
-		}
-		else if (a[0] > a[len_a - 1] && b[0] > b[len_b - 1])
-		{
-			ft_exec_rx(a);
-			ft_exec_rx(b);
-			ft_printf("rr\n");
-		}
-		else if (a[0] > a[len_a - 1])
-		{
-			ft_exec_rx(a);
-			ft_printf("ra\n");
-		}
-		else if (b[0] > b[len_b - 1])
-		{
-			ft_exec_rx(b);
-			ft_printf("rb\n");
-		}
-		else if (a[0] < a[len_a - 1] && b[0] < b[len_b - 1])
-		{
-			ft_exec_rrx(a, len_a - 1);
-			ft_exec_rrx(b, len_b - 1);
-			ft_printf("rrr\n");
-		}
-		else if (a[0] < a[len_a - 1])
-		{
-			ft_exec_rrx(a, len_a - 1);
-			ft_printf("rra\n");
-		}	
-		else if (b[0] < b[len_b - 1])
-		{
-			ft_exec_rrx(b, len_b - 1);
-			ft_printf("rrb\n");
-		}
-		else
-			break ;
-	}
-}
-
-static int n_nbr(char **nbr)
-{
-	int i;
-
-	i = 0;
-	while (nbr[i + 1])
-		i++;
-	return (i);
 }
 
 int	main(int argc, char **argv)
@@ -121,18 +38,17 @@ int	main(int argc, char **argv)
 		i = 0;
 		a = NULL;
 		b = NULL;
-		len = n_nbr(argv);
-		a = malloc((len + 1) * sizeof(int));
-		b = ft_calloc((len + 1), sizeof(int));
+		len = argc - 1;
+		a = malloc((len) * sizeof(int));
+		b = malloc((len) * sizeof(int));
 		while (i < len)
 		{
 			a[i] = ft_atoi(argv[i + 1]);
 			i++;
 		}
-		a[i] = '\0';
-		ft_push_swap(a, b);
+		ft_push_swap(a, b, len);
 		int i = 0;
-		while (a[i])
+		while (i < len)
 		{
 			ft_printf("a[%d]--> %d | b[%d]--> %d\n", i, a[i], i, b[i]);
 			i++;
