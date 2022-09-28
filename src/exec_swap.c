@@ -6,65 +6,64 @@
 /*   By: gussoare <gussoare@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 14:16:41 by gussoare          #+#    #+#             */
-/*   Updated: 2022/09/26 10:55:55 by gussoare         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:21:40 by gussoare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	ft_exec_sx(int *x)
+void	ft_exec_sx(t_nlist *x)
 {
 	int temp;
 	
-	temp = x[0];
-	x[0] = x[1];
-	x[1] = temp;
+	temp = x->n[0];
+	x->n[0] = x->n[1];
+	x->n[1] = temp;
 }
 
-void	ft_exec_px(int *x, int *y)
+void	ft_exec_px(t_nlist *x, t_nlist *y)
 {
-	int i;
-	int temp;
-
-	i = 0;
-	temp = ft_get_top(y);
-	ft_push_to_fit(x);
-	x[0] = temp;
+	x->len++;
+	y->len--;
+	y->nbr = y->n[0];
+	if (x->len == 1)
+		x->n = malloc(x->len * sizeof(int));
+	ft_get_top(y);
+	if (x->len > 1)
+		ft_push_to_fit(x);
+	x->n[0] = y->nbr;
 }
 
-void	ft_exec_rx(int *x)
+void	ft_exec_rx(t_nlist *x)
 {
 	int temp;
 	int	len;
 	int i;
 
-	len = ft_intlen(x);
+	len = x->len - 1;
 	i = 0;
-	temp = x[0];
-	while (i <= len)
+	temp = x->n[0];
+	while (i < len)
 	{
-		x[i] = x[i + 1];
+		x->n[i] = x->n[i + 1];
 		i++;
 	}
-	x[i] = temp;
-	x[i + 1] = '\0';
+	x->n[i] = temp;
 }
 
-void ft_exec_rrx(int *x)
+void ft_exec_rrx(t_nlist *x)
 {
 	int temp;
-	int i;
 	int len;
 
-	len = ft_intlen(x) - 1;
-	temp = x[len];
-	i = len;
-	while (i > 0)
+	len = x->len - 1;
+	temp = x->n[len];
+	while (len > 0)
 	{
-		x[i] = x[i - 1];
-		i--;
+		x->n[len] = x->n[len - 1];
+		len--;
 	}
-	x[0] = temp;
+	x->n[0] = temp;
 }
 
 /*#include <stdio.h>

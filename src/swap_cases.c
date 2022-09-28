@@ -6,35 +6,35 @@
 /*   By: gussoare <gussoare@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 09:51:27 by gussoare          #+#    #+#             */
-/*   Updated: 2022/09/26 13:25:12 by gussoare         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:26:06 by gussoare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int swap_three_case(int *a)
+int swap_three_case(t_nlist *a)
 {
 	//case 1
-	if (a[0] > a[1] && a[1] < a[2])
+	if (a->n[0] > a->n[1] && a->n[1] < a->n[2] && a->n[0] < a->n[2])
 	{
 		ft_exec_sx(a);
 		ft_printf("sa\n");
 	}
 	//case 2
-	else if (a[0] > a[1] && a[1] > a[2] && a[0] > a[2])
+	else if (a->n[0] > a->n[1] && a->n[1] > a->n[2] && a->n[0] > a->n[2])
 	{
 		ft_exec_sx(a);
 		ft_exec_rrx(a);
 		ft_printf("sa\nrra\n");
 	}
 	//case 3
-	else if (a[0] > a[1] && a[1] < a[2])
+	else if (a->n[0] > a->n[1] && a->n[1] < a->n[2] && a->n[0] > a->n[2])
 	{
 		ft_exec_rx(a);
 		ft_printf("ra\n");
 	}
 	//case 4
-	else if (a[0] < a[1] && a[1] > a[2] && a[0] < a[2])
+	else if (a->n[0] < a->n[1] && a->n[1] > a->n[2] && a->n[0] < a->n[2])
 	{
 		ft_exec_sx(a);
 		ft_exec_rx(a);
@@ -49,19 +49,61 @@ int swap_three_case(int *a)
 	return (0);
 }
 
-int swap_five_case(int *a, int *b, int len_a)
+void swap_five_case(t_nlist *a, t_nlist *b)
 {
-	int len_b
-	ft_printf("len-> %d\n", len_a);
-	while (len_a != 3)
+	while (a->len != 3)
 	{
 		ft_exec_px(b, a);
 		ft_printf("pb\n");
 	}
-	ft_printf("a[0]-> %d | b[0]-> %d\n", a[0], b[0]);
-	ft_printf("a[1]-> %d | b[1]-> %d\n", a[1], b[1]);
-	ft_printf("a[2]-> %d | b[2]-> %d\n", a[2], b[2]);
-	ft_printf("a[3]-> %d | b[3]-> %d\n", a[3], b[3]);
-	ft_printf("\n");
-	return (0);
+	swap_three_case(a);
+	while (b->len)
+	{
+		ft_exec_px(a, b);
+		ft_printf("pa\n");
+	}
+}
+
+void	swap_random_case(t_nlist *a, t_nlist *b)
+{
+	int mid;
+	mid = ft_find_mid(a->n, a->len);
+	ft_printf("\nmid point--> %d\n", mid);
+	while (ft_islower(mid, a) && a->len != 2)
+	{
+		if (a->n[0] < mid)
+		{
+			ft_exec_px(b, a);
+			ft_printf("pb\n");
+		}
+		else if (a->n[a->len - 1] < mid)
+		{
+			while (a->n[a->len - 1] < mid && ft_islower(mid, a) && a->len != 2)
+			{
+				ft_exec_rrx(a);
+				ft_printf("rra\n");
+				ft_exec_px(b, a);
+				ft_printf("pb\n");
+			}
+		}
+		else
+		{
+			while (ft_islower(mid, a) && a->len != 2)
+			{
+				if (a->n[0] >= mid)
+				{
+					ft_exec_rx(a);
+					ft_printf("ra\n");
+				}
+				else
+				{
+					ft_exec_px(b, a);
+					ft_printf("pb\n");
+				}
+			}
+		}
+	}
+	if (a->len != 2)
+		swap_random_case(a, b);
+
 }
