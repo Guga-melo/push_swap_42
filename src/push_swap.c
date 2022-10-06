@@ -6,7 +6,7 @@
 /*   By: gussoare <gussoare@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 13:21:51 by gussoare          #+#    #+#             */
-/*   Updated: 2022/09/28 14:30:32 by gussoare         ###   ########.fr       */
+/*   Updated: 2022/10/06 09:43:33 by gussoare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,24 @@ static int ft_push_swap(t_nlist *a, t_nlist *b)
 		else if (a->len == 3)
 			swap_three_case(a);
 		else
+		{
 			swap_random_case(a, b);
+			int i = 0;
+			ft_printf("\n***Stack A before swap back***\n");
+			while (i < a->len)
+			{
+				ft_printf("a[%d]--> %d\n", i, a->n[i]);
+				i++;
+			}
+			i = 0;
+			ft_printf("\n***Stack B before swap back***\n");
+			while (i < b->len)
+			{
+				ft_printf("b[%d]--> %d\n", i, b->n[i]);
+				i++;
+			}
+			swap_back_random_case(a, b);
+		}
 		/*
 		else if (a->len > 3 && a->len < 100)
 			swap_five_case(a, b);
@@ -32,6 +49,7 @@ static int ft_push_swap(t_nlist *a, t_nlist *b)
 	}
 	return (0);
 }
+
 
 int	main(int argc, char **argv)
 {
@@ -44,6 +62,8 @@ int	main(int argc, char **argv)
 		i = 0;
 		a.len = argc - 1;
 		b.len = 0;
+		b.init = 0;
+		b.n_chunk = 0;
 		a.n = malloc((a.len) * sizeof(int));
 		while (i < a.len)
 		{
@@ -66,7 +86,11 @@ int	main(int argc, char **argv)
 			i++;
 		}
 		free(a.n);
-		free(b.n);
+		if (b.n)
+		{
+			free(b.n);
+			free(b.chunk);
+		}
 	}
 	return (0);
 }

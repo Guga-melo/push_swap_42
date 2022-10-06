@@ -6,7 +6,7 @@
 /*   By: gussoare <gussoare@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 14:16:41 by gussoare          #+#    #+#             */
-/*   Updated: 2022/09/28 14:21:40 by gussoare         ###   ########.fr       */
+/*   Updated: 2022/10/03 13:25:47 by gussoare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ void	ft_exec_px(t_nlist *x, t_nlist *y)
 	x->len++;
 	y->len--;
 	y->nbr = y->n[0];
-	if (x->len == 1)
-		x->n = malloc(x->len * sizeof(int));
+	if (x->len == 1 && x->init == 0)
+	{
+		x->n = malloc(sizeof(int));
+		x->init = 1;
+	}
 	ft_get_top(y);
 	if (x->len > 1)
 		ft_push_to_fit(x);

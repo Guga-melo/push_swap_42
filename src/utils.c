@@ -6,7 +6,7 @@
 /*   By: gussoare <gussoare@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 10:49:46 by gussoare          #+#    #+#             */
-/*   Updated: 2022/09/28 14:45:43 by gussoare         ###   ########.fr       */
+/*   Updated: 2022/10/06 11:14:40 by gussoare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,6 @@ int	ft_find_mid(int *n, int len)
 			}
 			i++;
 		}
-	}
-	i = 0;
-	while (i < len)
-	{
-		ft_printf("temp[%d]--> %d\n", i, temp[i]);
-		i++;
 	}
 	if (len % 2 != 0)
 		len -= 1;
@@ -88,8 +82,6 @@ void	ft_get_top(t_nlist *y)
 		i++;
 	}
 	free(y->n);
-	y->n = malloc(y->len * sizeof(int));
-	i = 0;
 	y->n = ft_intdup(n_temp, y->len);
 	free(n_temp);
 }
@@ -101,13 +93,12 @@ void	ft_push_to_fit(t_nlist *x)
 
 	i = 0;
 	n_temp = malloc((x->len) * sizeof(int));
-	while (i < x->len)
+	while (i < x->len - 1)
 	{
 		n_temp[i + 1] = x->n[i];
 		i++;
 	}
 	free(x->n);
-	x->n = malloc((x->len) * sizeof(int));
 	x->n = ft_intdup(n_temp, x->len);
 	free(n_temp);
 }
