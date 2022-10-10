@@ -6,7 +6,7 @@
 /*   By: gussoare <gussoare@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 10:49:46 by gussoare          #+#    #+#             */
-/*   Updated: 2022/10/06 11:14:40 by gussoare         ###   ########.fr       */
+/*   Updated: 2022/10/10 13:35:50 by gussoare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ int	ft_find_mid(int *n, int len)
 			i++;
 		}
 	}
-	if (len % 2 != 0)
-		len -= 1;
+	len -= 1;
 	aux = temp[len / 2];
 	free(temp);
 	return (aux);

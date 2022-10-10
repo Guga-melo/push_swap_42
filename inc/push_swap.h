@@ -6,7 +6,7 @@
 /*   By: gussoare <gussoare@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 13:20:42 by gussoare          #+#    #+#             */
-/*   Updated: 2022/10/10 09:30:19 by gussoare         ###   ########.fr       */
+/*   Updated: 2022/10/10 10:32:12 by gussoare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ typedef struct s_nlist
 	int n_chunk;
 }				t_nlist;
 
-void	ft_exec_sx(t_nlist *x);
-void	ft_exec_px(t_nlist *x, t_nlist *y);
-void	ft_exec_rx(t_nlist *x);
-void	ft_exec_rrx(t_nlist *x);
+void	ft_exec_sx(t_nlist *x, int c);
+void	ft_exec_px(t_nlist *x, t_nlist *y, int c);
+void	ft_exec_rx(t_nlist *x, int c);
+void	ft_exec_rrx(t_nlist *x, int c);
 void	ft_get_top(t_nlist *y);
 void	ft_push_to_fit(t_nlist *x);
 int		swap_three_case(t_nlist *a);

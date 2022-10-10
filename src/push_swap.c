@@ -6,7 +6,7 @@
 /*   By: gussoare <gussoare@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 13:21:51 by gussoare          #+#    #+#             */
-/*   Updated: 2022/10/10 09:44:52 by gussoare         ###   ########.fr       */
+/*   Updated: 2022/10/10 13:49:55 by gussoare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ static int ft_push_swap(t_nlist *a, t_nlist *b)
 	if (!ft_check_sort(a->n, a->len))
 	{
 		if (a->len == 2 && a->n[0] > a->n[1])
-		{
-			ft_exec_sx(a);
-			ft_printf("sa\n");
-		}
+			ft_exec_sx(a, 'a');
 		else if (a->len == 3)
 			swap_three_case(a);
 		else
@@ -29,10 +26,8 @@ static int ft_push_swap(t_nlist *a, t_nlist *b)
 			{
 				swap_random_case(a, b);
 				if (a->n[0] > a->n[1])
-				{
-					ft_exec_sx(a);
-					ft_printf("sa\n");
-				}
+					ft_exec_sx(a, 'a');
+				/*
 				int i = 0;
 				ft_printf("\n***Stack A before swap back***\n");
 				while (i < a->len)
@@ -47,7 +42,9 @@ static int ft_push_swap(t_nlist *a, t_nlist *b)
 					ft_printf("b[%d]--> %d\n", i, b->n[i]);
 					i++;
 				}
+				*/
 				swap_back_random_case(a, b);
+				/*
 				i = 0;
 				ft_printf("\n***Stack A after swap back***\n");
 				while (i < a->len)
@@ -62,6 +59,7 @@ static int ft_push_swap(t_nlist *a, t_nlist *b)
 					ft_printf("b[%d]--> %d\n", i, b->n[i]);
 					i++;
 				}
+				*/
 			}
 		}
 		/*
@@ -93,6 +91,7 @@ int	main(int argc, char **argv)
 			i++;
 		}
 		ft_push_swap(&a, &b);
+		/*
 		int i = 0;
 		ft_printf("\n***Stack A***\n");
 		while (i < a.len)
@@ -107,6 +106,7 @@ int	main(int argc, char **argv)
 			ft_printf("b[%d]--> %d\n", i, b.n[i]);
 			i++;
 		}
+		*/
 		free(a.n);
 		free(b.n);
 		free(b.chunk);

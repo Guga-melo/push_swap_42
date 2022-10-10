@@ -6,22 +6,27 @@
 /*   By: gussoare <gussoare@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 14:16:41 by gussoare          #+#    #+#             */
-/*   Updated: 2022/10/03 13:25:47 by gussoare         ###   ########.fr       */
+/*   Updated: 2022/10/10 10:43:44 by gussoare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	ft_exec_sx(t_nlist *x)
+void	ft_exec_sx(t_nlist *x, int c)
 {
 	int temp;
 	
 	temp = x->n[0];
 	x->n[0] = x->n[1];
 	x->n[1] = temp;
+	if (c == 'a')
+		ft_printf("sa\n");
+	else
+		ft_printf("sb\n");
+
 }
 
-void	ft_exec_px(t_nlist *x, t_nlist *y)
+void	ft_exec_px(t_nlist *x, t_nlist *y, int c)
 {
 	x->len++;
 	y->len--;
@@ -35,9 +40,13 @@ void	ft_exec_px(t_nlist *x, t_nlist *y)
 	if (x->len > 1)
 		ft_push_to_fit(x);
 	x->n[0] = y->nbr;
+	if (c == 'a')
+		ft_printf("pa\n");
+	else
+		ft_printf("pb\n");
 }
 
-void	ft_exec_rx(t_nlist *x)
+void	ft_exec_rx(t_nlist *x, int c)
 {
 	int temp;
 	int	len;
@@ -52,9 +61,13 @@ void	ft_exec_rx(t_nlist *x)
 		i++;
 	}
 	x->n[i] = temp;
+	if (c == 'a')
+		ft_printf("ra\n");
+	else
+		ft_printf("rb\n");
 }
 
-void ft_exec_rrx(t_nlist *x)
+void ft_exec_rrx(t_nlist *x, int c)
 {
 	int temp;
 	int len;
@@ -67,6 +80,10 @@ void ft_exec_rrx(t_nlist *x)
 		len--;
 	}
 	x->n[0] = temp;
+	if (c == 'a')
+		ft_printf("rra\n");
+	else
+		ft_printf("rrb\n");
 }
 
 /*#include <stdio.h>

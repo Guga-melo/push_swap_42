@@ -6,7 +6,7 @@
 /*   By: gussoare <gussoare@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 13:08:39 by gussoare          #+#    #+#             */
-/*   Updated: 2022/10/06 13:05:15 by gussoare         ###   ########.fr       */
+/*   Updated: 2022/10/10 13:49:15 by gussoare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,14 @@ void	ft_chunk_size(t_nlist *x, int len)
 	if (x->n_chunk > 1)
 		ft_create_chunk(x);
 	x->chunk[0] = len;
+	/*
 	int y = 0;
 	while (y < x->n_chunk)
 	{
 		ft_printf("chunk[%d]--> %d\n", y, x->chunk[y]);
 		y++;
 	}
+	*/
 }
 
 void ft_create_chunk(t_nlist *x)
@@ -86,7 +88,7 @@ void ft_update_chunk(t_nlist *b, int i, int j)
 	{
 		while (x < b->n_chunk - 1)
 		{
-			temp[x + 1] = b->chunk[i + 1];
+			temp[x + 1] = b->chunk[i + x + 1];
 			x++;
 		}
 	}
@@ -94,10 +96,12 @@ void ft_update_chunk(t_nlist *b, int i, int j)
 	free(b->chunk);
 	b->chunk = ft_intdup(temp, b->n_chunk);
 	free(temp);
+	/*
 	int y = 0;
 	while (y < b->n_chunk)
 	{
 		ft_printf("chunk[%d]--> %d\n", y, b->chunk[y]);
 		y++;
 	}
+	*/
 }
