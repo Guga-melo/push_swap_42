@@ -6,7 +6,7 @@
 /*   By: gussoare <gussoare@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 13:20:42 by gussoare          #+#    #+#             */
-/*   Updated: 2022/10/06 12:04:49 by gussoare         ###   ########.fr       */
+/*   Updated: 2022/10/10 09:30:19 by gussoare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_check_sort(int *n, int len);
 int		*ft_intdup(int *n, int len);
 int		ft_islower(int mid, t_nlist *x);
 int		ft_ishigher(int mid, t_nlist *x, int len);
-void	swap_back_random_case(t_nlist *a, t_nlist *b);
+int 	swap_back_random_case(t_nlist *a, t_nlist *b);
 void	ft_chunk_size(t_nlist *x, int len);
 void	ft_create_chunk(t_nlist *x);
 void	ft_update_chunk(t_nlist *b, int i, int j);

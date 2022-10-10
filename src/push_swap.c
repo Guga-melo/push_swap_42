@@ -6,7 +6,7 @@
 /*   By: gussoare <gussoare@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 13:21:51 by gussoare          #+#    #+#             */
-/*   Updated: 2022/10/06 09:43:33 by gussoare         ###   ########.fr       */
+/*   Updated: 2022/10/10 09:44:52 by gussoare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,44 @@ static int ft_push_swap(t_nlist *a, t_nlist *b)
 			swap_three_case(a);
 		else
 		{
-			swap_random_case(a, b);
-			int i = 0;
-			ft_printf("\n***Stack A before swap back***\n");
-			while (i < a->len)
+			while (!ft_check_sort(a->n, a->len))
 			{
-				ft_printf("a[%d]--> %d\n", i, a->n[i]);
-				i++;
+				swap_random_case(a, b);
+				if (a->n[0] > a->n[1])
+				{
+					ft_exec_sx(a);
+					ft_printf("sa\n");
+				}
+				int i = 0;
+				ft_printf("\n***Stack A before swap back***\n");
+				while (i < a->len)
+				{
+					ft_printf("a[%d]--> %d\n", i, a->n[i]);
+					i++;
+				}
+				i = 0;
+				ft_printf("\n***Stack B before swap back***\n");
+				while (i < b->len)
+				{
+					ft_printf("b[%d]--> %d\n", i, b->n[i]);
+					i++;
+				}
+				swap_back_random_case(a, b);
+				i = 0;
+				ft_printf("\n***Stack A after swap back***\n");
+				while (i < a->len)
+				{
+					ft_printf("a[%d]--> %d\n", i, a->n[i]);
+					i++;
+				}
+				i = 0;
+				ft_printf("\n***Stack B after swap back***\n");
+				while (i < b->len)
+				{
+					ft_printf("b[%d]--> %d\n", i, b->n[i]);
+					i++;
+				}
 			}
-			i = 0;
-			ft_printf("\n***Stack B before swap back***\n");
-			while (i < b->len)
-			{
-				ft_printf("b[%d]--> %d\n", i, b->n[i]);
-				i++;
-			}
-			swap_back_random_case(a, b);
 		}
 		/*
 		else if (a->len > 3 && a->len < 100)
@@ -86,11 +108,8 @@ int	main(int argc, char **argv)
 			i++;
 		}
 		free(a.n);
-		if (b.n)
-		{
-			free(b.n);
-			free(b.chunk);
-		}
+		free(b.n);
+		free(b.chunk);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gussoare <gussoare@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 09:51:27 by gussoare          #+#    #+#             */
-/*   Updated: 2022/10/06 12:29:20 by gussoare         ###   ########.fr       */
+/*   Updated: 2022/10/10 09:55:45 by gussoare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,17 @@ void	swap_random_case(t_nlist *a, t_nlist *b)
 		{
 			while (ft_islower(mid, a) && a->len != 2)
 			{
-				if (a->n[0] >= mid)
+				if (a->n[0] > mid)
 				{
 					ft_exec_rx(a);
 					ft_printf("ra\n");
 				}
-				else
+				else if (a->n[0] < mid && a->n[0] > a->n[1])
+				{
+					ft_exec_sx(a);
+					ft_printf("sa\n");
+				}
+				else 
 				{
 					ft_exec_px(b, a);
 					ft_printf("pb\n");
@@ -111,7 +116,7 @@ void	swap_random_case(t_nlist *a, t_nlist *b)
 		swap_random_case(a, b);
 }
 
-void swap_back_random_case(t_nlist *a, t_nlist *b)
+int swap_back_random_case(t_nlist *a, t_nlist *b)
 {
 	
 	int i;
@@ -176,9 +181,7 @@ void swap_back_random_case(t_nlist *a, t_nlist *b)
 				else
 				{
 					ft_update_chunk(b, i, j);
-					b->n_chunk++;
-					i = -1;
-					break ;
+					return (swap_back_random_case(a, b));
 				}
 					
 			}
@@ -199,4 +202,5 @@ void swap_back_random_case(t_nlist *a, t_nlist *b)
 			ft_printf("pa\n");
 		}
 	}
+	return (0);
 }
